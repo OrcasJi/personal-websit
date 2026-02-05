@@ -10,20 +10,20 @@ export default function Contact() {
         <div className="mt-8 space-y-3 text-sm">
           <p>
             Email:{" "}
-            <a className="underline decoration-zinc-300" href="mailto:your@email.com">
-              your@email.com
+            <a className="underline decoration-zinc-300" href="mailto:orcasjiovo@gmail.com">
+              orcasjiovo@gmail.com
             </a>
           </p>
           <p>
             LinkedIn:{" "}
-            <a className="underline decoration-zinc-300" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
-              linkedin.com/in/...
+            <a className="underline decoration-zinc-300" href="www.linkedin.com/in/orcas-ji-about-me" target="_blank" rel="www.linkedin.com/in/orcas-ji-about-me">
+              www.linkedin.com/in/orcas-ji-about-me
             </a>
           </p>
           <p>
             GitHub:{" "}
-            <a className="underline decoration-zinc-300" href="https://github.com/" target="_blank" rel="noreferrer">
-              github.com/...
+            <a className="underline decoration-zinc-300" href="https://github.com/OrcasJi" target="_blank" rel="https://github.com/OrcasJi">
+              https://github.com/OrcasJi
             </a>
           </p>
         </div>
