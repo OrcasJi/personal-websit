@@ -35,8 +35,7 @@ const PROJECTS: Project[] = [
     tech: ["Python", "Transformers", "PyTorch", "MySQL", "RapidFuzz", "Pandas"],
     tags: ["AI", "NLP", "Data", "Full-Stack"],
     links: [
-      { label: "GitHub", href: "https://github.com/OrcasJi" },
-      { label: "Case Study", href: "https://github.com/OrcasJi" },
+      { label: "GitHub", href: "https://github.com/OrcasJi/AI-shopping-assistant" },
     ],
   },
   {
@@ -53,8 +52,7 @@ const PROJECTS: Project[] = [
     tech: ["TypeScript", "Cloudflare Workers", "Durable Objects", "HTML/CSS"],
     tags: ["Cloud", "Web", "Full-Stack"],
     links: [
-      { label: "GitHub", href: "https://github.com/OrcasJi" },
-      { label: "Live Demo", href: "https://example.com" },
+      { label: "GitHub", href: "https://github.com/OrcasJi/cf_ai_cloudflare_agent" },
     ],
   },
   {
@@ -70,8 +68,7 @@ const PROJECTS: Project[] = [
     tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"],
     tags: ["Web", "Full-Stack"],
     links: [
-      { label: "GitHub", href: "https://github.com/OrcasJi" },
-      { label: "Live Demo", href: "https://example.com" },
+      { label: "GitHub", href: "https://github.com/OrcasJi/personal-website" },
     ],
   },
 ];
