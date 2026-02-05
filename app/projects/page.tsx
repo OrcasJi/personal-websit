@@ -73,7 +73,7 @@ const PROJECTS: Project[] = [
   },
 ];
 
-// --- UI helpers (small + safe)
+// --- UI helpers
 function cx(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
 }
@@ -97,32 +97,26 @@ export default function ProjectsPage() {
   }, [active]);
 
   return (
-    <main className="min-h-screen bg-white text-zinc-900">
+    <main className="min-h-screen">
       <div className="mx-auto max-w-5xl px-6 py-16">
         {/* Header */}
-        <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <header className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+            <p className="text-sm text-zinc-500">Selected work</p>
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
               Projects
             </h1>
-            <p className="mt-3 max-w-2xl text-zinc-600 leading-relaxed">
-              A focused selection of work that demonstrates practical engineering
-              and applied AI. Each project highlights clear outcomes, clean
-              architecture, and deployability.
+            <p className="mt-3 max-w-2xl leading-relaxed text-zinc-600">
+              A focused selection of work demonstrating practical engineering and applied AI —
+              with clear outcomes, clean architecture, and deployability.
             </p>
           </div>
 
           <div className="flex gap-2">
-            <a
-              href="/"
-              className="rounded-xl border border-zinc-200 px-4 py-2 text-sm hover:bg-zinc-50"
-            >
+            <a href="/" className="btn-secondary">
               Home
             </a>
-            <a
-              href="/contact"
-              className="rounded-xl bg-zinc-900 px-4 py-2 text-sm text-white hover:bg-zinc-800"
-            >
+            <a href="/contact" className="btn-primary">
               Contact
             </a>
           </div>
@@ -140,8 +134,8 @@ export default function ProjectsPage() {
                   className={cx(
                     "rounded-full px-4 py-2 text-sm transition",
                     isActive
-                      ? "bg-zinc-900 text-white"
-                      : "border border-zinc-200 text-zinc-700 hover:bg-zinc-50"
+                      ? "bg-zinc-900 text-white shadow-sm"
+                      : "border border-zinc-200 bg-white/70 text-zinc-700 hover:bg-zinc-50"
                   )}
                   type="button"
                 >
@@ -152,7 +146,7 @@ export default function ProjectsPage() {
           </div>
 
           <p className="mt-4 text-sm text-zinc-500">
-            Showing <span className="font-medium">{filtered.length}</span>{" "}
+            Showing <span className="font-medium text-zinc-800">{filtered.length}</span>{" "}
             project{filtered.length === 1 ? "" : "s"}.
           </p>
         </section>
@@ -160,17 +154,11 @@ export default function ProjectsPage() {
         {/* Grid */}
         <section className="mt-8 grid gap-6 lg:grid-cols-2">
           {filtered.map((p) => (
-            <article
-              key={p.title}
-              className={cx(
-                "group rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition",
-                "hover:-translate-y-0.5 hover:shadow-md"
-              )}
-            >
+            <article key={p.title} className="card card-hover p-6">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <div className="flex flex-wrap items-center gap-2">
-                    <h2 className="text-xl font-semibold tracking-tight">
+                    <h2 className="text-xl font-semibold tracking-tight text-zinc-900">
                       {p.title}
                     </h2>
                     {p.featured && (
@@ -183,22 +171,17 @@ export default function ProjectsPage() {
                   <p className="mt-2 text-sm text-zinc-600">{p.tagline}</p>
                 </div>
 
-                {/* Tags */}
-                <div className="hidden flex-wrap gap-2 sm:flex">
+                {/* Tags (top-right, limited) */}
+                <div className="hidden flex-wrap justify-end gap-2 sm:flex">
                   {p.tags.slice(0, 3).map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-full border border-zinc-200 px-3 py-1 text-xs text-zinc-700"
-                    >
+                    <span key={t} className="pill">
                       {t}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <p className="mt-4 text-zinc-600 leading-relaxed">
-                {p.description}
-              </p>
+              <p className="mt-4 leading-relaxed text-zinc-600">{p.description}</p>
 
               {/* Highlights */}
               <div className="mt-5">
@@ -218,10 +201,7 @@ export default function ProjectsPage() {
                 <p className="text-sm font-medium text-zinc-900">Tech</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {p.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-full bg-zinc-50 px-3 py-1 text-xs text-zinc-700 ring-1 ring-zinc-200"
-                    >
+                    <span key={t} className="pill bg-zinc-50">
                       {t}
                     </span>
                   ))}
@@ -238,12 +218,7 @@ export default function ProjectsPage() {
                       href={l.href}
                       target="_blank"
                       rel="noreferrer"
-                      className={cx(
-                        "rounded-xl px-4 py-2 text-sm transition",
-                        primary
-                          ? "bg-zinc-900 text-white hover:bg-zinc-800"
-                          : "border border-zinc-200 text-zinc-800 hover:bg-zinc-50"
-                      )}
+                      className={primary ? "btn-primary" : "btn-secondary"}
                     >
                       {l.label}
                     </a>
@@ -256,12 +231,10 @@ export default function ProjectsPage() {
 
         {/* Empty state */}
         {filtered.length === 0 && (
-          <div className="mt-12 rounded-2xl border border-dashed border-zinc-300 p-10 text-center">
-            <p className="text-zinc-700">
-              No projects match this filter yet.
-            </p>
+          <div className="card mt-12 p-10 text-center">
+            <p className="text-zinc-700">No projects match this filter yet.</p>
             <button
-              className="mt-4 rounded-xl bg-zinc-900 px-4 py-2 text-sm text-white hover:bg-zinc-800"
+              className="btn-primary mt-4"
               onClick={() => setActive("ALL")}
               type="button"
             >
@@ -271,26 +244,19 @@ export default function ProjectsPage() {
         )}
 
         {/* Footer CTA */}
-        <footer className="mt-16 rounded-2xl border border-zinc-200 p-6">
+        <footer className="card mt-16 p-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="font-medium">Want to talk?</p>
+              <p className="font-medium text-zinc-900">Want to talk?</p>
               <p className="mt-1 text-sm text-zinc-600">
-                I’m open to Graduate / Early Career roles in the UK. Feel free
-                to reach out.
+                I’m open to Graduate / Early Career roles in the UK. Feel free to reach out.
               </p>
             </div>
             <div className="flex gap-2">
-              <a
-                href="/contact"
-                className="rounded-xl bg-zinc-900 px-4 py-2 text-sm text-white hover:bg-zinc-800"
-              >
+              <a href="/contact" className="btn-primary">
                 Contact
               </a>
-              <a
-                href="/"
-                className="rounded-xl border border-zinc-200 px-4 py-2 text-sm hover:bg-zinc-50"
-              >
+              <a href="/" className="btn-secondary">
                 Back to Home
               </a>
             </div>
