@@ -6,7 +6,7 @@ export default function Contact() {
       value: "orcasjiovo@gmail.com",
       href: "mailto:orcasjiovo@gmail.com",
       icon: "✉️",
-      accent: "group-hover:bg-zinc-900 group-hover:text-white",
+      accent: "group-hover:bg-blue-100 group-hover:text-blue-700",
     },
     {
       title: "LinkedIn",
@@ -14,7 +14,7 @@ export default function Contact() {
       value: "linkedin.com/in/orcas-ji-about-me",
       href: "https://www.linkedin.com/in/orcas-ji-about-me",
       icon: "💼",
-      accent: "group-hover:bg-zinc-900 group-hover:text-white",
+      accent: "group-hover:bg-blue-100 group-hover:text-blue-700",
     },
     {
       title: "GitHub",
@@ -22,7 +22,7 @@ export default function Contact() {
       value: "github.com/OrcasJi",
       href: "https://github.com/OrcasJi",
       icon: "💻",
-      accent: "group-hover:bg-zinc-900 group-hover:text-white",
+      accent: "group-hover:bg-blue-100 group-hover:text-blue-700",
     },
   ];
 
