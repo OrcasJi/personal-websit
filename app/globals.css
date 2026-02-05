@@ -1,12 +1,10 @@
 @import "tailwindcss";
 
-/* Base tokens */
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
-/* Tailwind v4 theme bridge (你现在这段是 OK 的) */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -14,15 +12,16 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* Dark mode tokens */
+/* ✅ 先删掉这段（否则暗色模式会变成白字） */
+/*
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
 }
+*/
 
-/* Global background (lightweight site-wide background) */
 body {
   color: var(--foreground);
   background: radial-gradient(
@@ -30,27 +29,13 @@ body {
       rgba(0, 0, 0, 0.06),
       transparent 55%
     ),
-    linear-gradient(to bottom, rgba(250, 250, 250, 1), rgba(255, 255, 255, 1));
+    linear-gradient(to bottom, #fafafa, #ffffff);
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ---------- Reusable UI classes (NO "btn" utility used) ---------- */
-.card {
-  @apply rounded-3xl border border-zinc-200 bg-white/85 shadow-sm backdrop-blur;
-}
-
-.card-hover {
-  @apply transition-all duration-200 hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-md;
-}
-
-.pill {
-  @apply whitespace-nowrap rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs text-zinc-700;
-}
-
-.btn-primary {
-  @apply inline-flex items-center justify-center rounded-xl bg-zinc-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-zinc-800;
-}
-
-.btn-secondary {
-  @apply inline-flex items-center justify-center rounded-xl border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-900 transition hover:bg-zinc-50;
-}
+/* reusable UI */
+.card { @apply rounded-3xl border border-zinc-200 bg-white/85 shadow-sm backdrop-blur; }
+.card-hover { @apply transition-all duration-200 hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-md; }
+.pill { @apply whitespace-nowrap rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs text-zinc-700; }
+.btn-primary { @apply inline-flex items-center justify-center rounded-xl bg-zinc-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-zinc-800; }
+.btn-secondary { @apply inline-flex items-center justify-center rounded-xl border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-900 transition hover:bg-zinc-50; }
